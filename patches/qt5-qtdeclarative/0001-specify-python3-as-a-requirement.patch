@@ -1,0 +1,25 @@
+From ae1ffbf1ae6a4a01a8d4cfbe01e97e67ca858244 Mon Sep 17 00:00:00 2001
+From: Rinigus <rinigus.git@gmail.com>
+Date: Tue, 22 Sep 2020 23:03:47 +0300
+Subject: [PATCH] specify python3 as a requirement
+
+---
+ qt5-qtdeclarative.spec | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/qt5-qtdeclarative.spec b/qt5-qtdeclarative.spec
+index c6dcfec..15b677e 100644
+--- a/qt5-qtdeclarative.spec
++++ b/qt5-qtdeclarative.spec
+@@ -35,7 +35,7 @@ BuildRequires: qt5-rpm-macros
+ BuildRequires: qt5-qtbase-devel >= %{version}
+ BuildRequires: qt5-qtbase-private-devel
+ %{?_qt5:Requires: %{_qt5}%{?_isa} = %{_qt5_version}}
+-BuildRequires: python%{python3_pkgversion}
++BuildRequires: python3
+ 
+ %if 0%{?bootstrap}
+ Obsoletes: %{name}-examples < %{version}-%{release}
+-- 
+2.26.2
+

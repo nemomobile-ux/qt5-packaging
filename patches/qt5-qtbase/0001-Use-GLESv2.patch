@@ -1,0 +1,88 @@
+From 57743b9a4fa3a914f0718635be464c63b19c0ada Mon Sep 17 00:00:00 2001
+From: Rinigus <rinigus.git@gmail.com>
+Date: Tue, 22 Sep 2020 22:01:09 +0300
+Subject: [PATCH] Use GLESv2
+
+---
+ qt5-qtbase.spec | 22 ++++++++++++----------
+ 1 file changed, 12 insertions(+), 10 deletions(-)
+
+diff --git a/qt5-qtbase.spec b/qt5-qtbase.spec
+index 58dde75..302d66f 100644
+--- a/qt5-qtbase.spec
++++ b/qt5-qtbase.spec
+@@ -161,7 +161,7 @@ BuildRequires: pkgconfig(dbus-1)
+ %endif
+ BuildRequires: pkgconfig(libdrm)
+ BuildRequires: pkgconfig(fontconfig)
+-BuildRequires: pkgconfig(gl)
++#BuildRequires: pkgconfig(gl)
+ BuildRequires: pkgconfig(glib-2.0)
+ BuildRequires: pkgconfig(gtk+-3.0)
+ BuildRequires: pkgconfig(libproxy-1.0)
+@@ -196,9 +196,9 @@ BuildRequires: libEGL-devel
+ BuildRequires: pkgconfig(gbm)
+ ## TODO: apparently only needed if building opengl_es2 support, do we actually use it?  -- rex
+ ## this dep was removed in rawhide with introduction of mesa-19.1
+-%if 0%{?fedora} < 30
++#%if 0%{?fedora} < 30
+ BuildRequires: pkgconfig(glesv2)
+-%endif
++#%endif
+ %global sqlite -system-sqlite
+ BuildRequires: pkgconfig(sqlite3) >= 3.7
+ %if 0%{?fedora} > 22
+@@ -276,7 +276,7 @@ Requires: %{name}-gui%{?_isa}
+ %if 0%{?egl}
+ Requires: libEGL-devel
+ %endif
+-Requires: pkgconfig(gl)
++Requires: pkgconfig(glesv2)
+ Requires: qt5-rpm-macros
+ %if 0%{?use_clang}
+ Requires: clang >= 3.7.0
+@@ -465,6 +465,8 @@ export MAKEFLAGS="%{?_smp_mflags}"
+   -sysconfdir %{_qt5_sysconfdir} \
+   -translationdir %{_qt5_translationdir} \
+   -platform %{platform} \
++  -opengl es2 \
++  -no-opengles3 \
+   -release \
+   -shared \
+   -accessibility \
+@@ -858,7 +860,7 @@ fi
+ %{_qt5_libdir}/cmake/Qt5EventDispatcherSupport/Qt5EventDispatcherSupportConfig*.cmake
+ %{_qt5_libdir}/cmake/Qt5FbSupport/Qt5FbSupportConfig*.cmake
+ %{_qt5_libdir}/cmake/Qt5FontDatabaseSupport/Qt5FontDatabaseSupportConfig*.cmake
+-%{_qt5_libdir}/cmake/Qt5GlxSupport/Qt5GlxSupportConfig*.cmake
++#%{_qt5_libdir}/cmake/Qt5GlxSupport/Qt5GlxSupportConfig*.cmake
+ %{_qt5_libdir}/cmake/Qt5InputSupport/Qt5InputSupportConfig*.cmake
+ %{_qt5_libdir}/cmake/Qt5KmsSupport/Qt5KmsSupportConfig*.cmake
+ %{_qt5_libdir}/cmake/Qt5LinuxAccessibilitySupport/Qt5LinuxAccessibilitySupportConfig*.cmake
+@@ -919,9 +921,9 @@ fi
+ %{_qt5_libdir}/libQt5FontDatabaseSupport.*a
+ %{_qt5_libdir}/libQt5FontDatabaseSupport.prl
+ %{_qt5_headerdir}/QtFontDatabaseSupport
+-%{_qt5_libdir}/libQt5GlxSupport.*a
+-%{_qt5_libdir}/libQt5GlxSupport.prl
+-%{_qt5_headerdir}/QtGlxSupport
++#%{_qt5_libdir}/libQt5GlxSupport.*a
++#%{_qt5_libdir}/libQt5GlxSupport.prl
++#%{_qt5_headerdir}/QtGlxSupport
+ %{_qt5_libdir}/libQt5InputSupport.*a
+ %{_qt5_libdir}/libQt5InputSupport.prl
+ %{_qt5_libdir}/libQt5LinuxAccessibilitySupport.*a
+@@ -1037,8 +1039,8 @@ fi
+ %{_qt5_libdir}/cmake/Qt5Gui/Qt5Gui_QOffscreenIntegrationPlugin.cmake
+ %{_qt5_libdir}/cmake/Qt5Gui/Qt5Gui_QVncIntegrationPlugin.cmake
+ %{_qt5_libdir}/cmake/Qt5Gui/Qt5Gui_QXcbIntegrationPlugin.cmake
+-%{_qt5_plugindir}/xcbglintegrations/libqxcb-glx-integration.so
+-%{_qt5_libdir}/cmake/Qt5Gui/Qt5Gui_QXcbGlxIntegrationPlugin.cmake
++#%{_qt5_plugindir}/xcbglintegrations/libqxcb-glx-integration.so
++#%{_qt5_libdir}/cmake/Qt5Gui/Qt5Gui_QXcbGlxIntegrationPlugin.cmake
+ %{_qt5_plugindir}/platformthemes/libqxdgdesktopportal.so
+ %{_qt5_plugindir}/platformthemes/libqgtk3.so
+ %{_qt5_libdir}/cmake/Qt5Gui/Qt5Gui_QXdgDesktopPortalThemePlugin.cmake
+-- 
+2.26.2
+

@@ -1,0 +1,25 @@
+From de38867b8a4c3d515cf4da3238bd412dd6291619 Mon Sep 17 00:00:00 2001
+From: Rinigus <rinigus.git@gmail.com>
+Date: Tue, 22 Sep 2020 22:58:43 +0300
+Subject: [PATCH] specify file as a requirement
+
+---
+ qt5-qttools.spec | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/qt5-qttools.spec b/qt5-qttools.spec
+index 99d030e..0cbcfe5 100644
+--- a/qt5-qttools.spec
++++ b/qt5-qttools.spec
+@@ -40,7 +40,7 @@ Source23: qdbusviewer.desktop
+ BuildRequires: cmake
+ %endif
+ BuildRequires: desktop-file-utils
+-BuildRequires: /usr/bin/file
++BuildRequires: file
+ BuildRequires: qt5-rpm-macros >= %{version}
+ 
+ BuildRequires: qt5-qtbase-private-devel
+-- 
+2.26.2
+

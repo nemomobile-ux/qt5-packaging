@@ -1,0 +1,25 @@
+From c4bd1d2072cdd68c74864d9868ff92f020798a00 Mon Sep 17 00:00:00 2001
+From: Rinigus <rinigus.git@gmail.com>
+Date: Tue, 22 Sep 2020 22:50:16 +0300
+Subject: [PATCH 2/3] do not specify arch via macro
+
+---
+ qt5-qtwebengine.spec | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/qt5-qtwebengine.spec b/qt5-qtwebengine.spec
+index 0e63dce..e5b21bd 100644
+--- a/qt5-qtwebengine.spec
++++ b/qt5-qtwebengine.spec
+@@ -104,7 +104,7 @@ Patch29: qtwebengine-everywhere-5.14.1-gcc10.patch
+ # qtwebengine-chromium
+ 
+ # handled by qt5-srpm-macros, which defines %%qt5_qtwebengine_arches
+-ExclusiveArch: %{qt5_qtwebengine_arches}
++#ExclusiveArch: %{qt5_qtwebengine_arches}
+ 
+ BuildRequires: qt5-qtbase-devel
+ BuildRequires: qt5-qtbase-private-devel
+-- 
+2.26.2
+

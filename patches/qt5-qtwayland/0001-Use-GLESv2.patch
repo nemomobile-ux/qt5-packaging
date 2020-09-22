@@ -1,0 +1,26 @@
+From 18ac064fd1eb64a766a9729706095b5ef1038d96 Mon Sep 17 00:00:00 2001
+From: Rinigus <rinigus.git@gmail.com>
+Date: Tue, 22 Sep 2020 22:19:54 +0300
+Subject: [PATCH] Use GLESv2
+
+---
+ qt5-qtwayland.spec | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/qt5-qtwayland.spec b/qt5-qtwayland.spec
+index 3a5a108..92db320 100644
+--- a/qt5-qtwayland.spec
++++ b/qt5-qtwayland.spec
+@@ -48,7 +48,8 @@ BuildRequires:  pkgconfig(wayland-client)
+ BuildRequires:  pkgconfig(wayland-cursor)
+ BuildRequires:  pkgconfig(wayland-egl)
+ BuildRequires:  pkgconfig(egl)
+-BuildRequires:  pkgconfig(gl)
++#BuildRequires:  pkgconfig(gl)
++BuildRequires:  pkgconfig(glesv2)
+ BuildRequires:  pkgconfig(xcomposite)
+ BuildRequires:  pkgconfig(xrender)
+ BuildRequires:  pkgconfig(libudev)
+-- 
+2.26.2
+

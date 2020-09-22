@@ -1,0 +1,33 @@
+From 6e2658340c2a8484a86197eacefa929e66d892fe Mon Sep 17 00:00:00 2001
+From: Rinigus <rinigus.git@gmail.com>
+Date: Tue, 22 Sep 2020 22:55:33 +0300
+Subject: [PATCH 3/3] specify python2 requirement
+
+---
+ qt5-qtwebengine.spec | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/qt5-qtwebengine.spec b/qt5-qtwebengine.spec
+index e5b21bd..3c3292b 100644
+--- a/qt5-qtwebengine.spec
++++ b/qt5-qtwebengine.spec
+@@ -186,12 +186,12 @@ BuildRequires: perl-interpreter
+ # fesco exception to allow python2 use: https://pagure.io/fesco/issue/2208
+ # per https://fedoraproject.org/wiki/Changes/RetirePython2#FESCo_exceptions
+ # Only the interpreter is needed
+-%if 0%{?fedora} > 29 || 0%{?rhel} > 8
+-BuildRequires: %{__python2}
+-%else
++#%if 0%{?fedora} > 29 || 0%{?rhel} > 8
++#BuildRequires: %{__python2}
++#%else
+ BuildRequires: python2
+ BuildRequires: python2-rpm-macros
+-%endif
++#%endif
+ %if 0%{?use_system_libvpx}
+ BuildRequires: pkgconfig(vpx) >= 1.7.0
+ %endif
+-- 
+2.26.2
+
