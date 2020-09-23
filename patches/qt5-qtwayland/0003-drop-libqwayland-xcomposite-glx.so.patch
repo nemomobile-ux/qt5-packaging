@@ -1,0 +1,25 @@
+From 8bc86cf5e700c006ef97ad0108779aac21d4e1d1 Mon Sep 17 00:00:00 2001
+From: Rinigus <rinigus.git@gmail.com>
+Date: Wed, 23 Sep 2020 21:18:44 +0300
+Subject: [PATCH 3/3] drop libqwayland-xcomposite-glx.so
+
+---
+ qt5-qtwayland.spec | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/qt5-qtwayland.spec b/qt5-qtwayland.spec
+index 5788fd5..0189e89 100644
+--- a/qt5-qtwayland.spec
++++ b/qt5-qtwayland.spec
+@@ -118,7 +118,7 @@ popd
+ %{_qt5_plugindir}/platforms/libqwayland-egl.so
+ %{_qt5_plugindir}/platforms/libqwayland-generic.so
+ %{_qt5_plugindir}/platforms/libqwayland-xcomposite-egl.so
+-%{_qt5_plugindir}/platforms/libqwayland-xcomposite-glx.so
++#%{_qt5_plugindir}/platforms/libqwayland-xcomposite-glx.so
+ %{_qt5_qmldir}/QtWayland/
+ 
+ %files devel
+-- 
+2.26.2
+

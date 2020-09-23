@@ -1,0 +1,27 @@
+From 8b23e351b399a2f6146a3cfd6a947e3f892c3dc8 Mon Sep 17 00:00:00 2001
+From: Rinigus <rinigus.git@gmail.com>
+Date: Wed, 23 Sep 2020 22:01:53 +0300
+Subject: [PATCH] adjust spec to include egl videonode
+
+---
+ qt5-qtmultimedia.spec | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/qt5-qtmultimedia.spec b/qt5-qtmultimedia.spec
+index 6253640..18f5266 100644
+--- a/qt5-qtmultimedia.spec
++++ b/qt5-qtmultimedia.spec
+@@ -114,8 +114,9 @@ popd
+ %{_qt5_plugindir}/audio/
+ %{_qt5_plugindir}/mediaservice/
+ %{_qt5_plugindir}/playlistformats/
++%{_qt5_plugindir}/video/
+ %dir %{_qt5_libdir}/cmake/Qt5Multimedia/
+-%{_qt5_libdir}/cmake/Qt5Multimedia/Qt5Multimedia_*Plugin.cmake
++%{_qt5_libdir}/cmake/Qt5Multimedia/Qt5Multimedia_*.cmake
+ %dir %{_qt5_libdir}/cmake/Qt5MultimediaWidgets/
+ 
+ %files devel
+-- 
+2.26.2
+
