@@ -1,0 +1,79 @@
+From 3d8fdd282831846dac9577fe8c016cad2f172409 Mon Sep 17 00:00:00 2001
+From: Rinigus <rinigus.git@gmail.com>
+Date: Wed, 23 Sep 2020 20:33:43 +0300
+Subject: [PATCH 2/2] add patch to fix example
+
+---
+ qt5-qtwayland.spec                            |  3 ++
+ ...land-texture-sharing-custom-composit.patch | 45 +++++++++++++++++++
+ 2 files changed, 48 insertions(+)
+ create mode 100644 qtwayland-examples-fix-wayland-texture-sharing-custom-composit.patch
+
+diff --git a/qt5-qtwayland.spec b/qt5-qtwayland.spec
+index 92db320..5788fd5 100644
+--- a/qt5-qtwayland.spec
++++ b/qt5-qtwayland.spec
+@@ -32,6 +32,9 @@ Patch103: qtwayland-client-initialize-mscale-on-creation-instead-of-on-show.patc
+ Patch104: qtwayland-client-send-subsurface-expose-event-when-toplevel-is-configured.patch
+ Patch105: qtwayland-client-dont-send-fakt-surface-created-destroyed-events.patch
+ 
++# Upstream patches added for Nemo
++Patch200: qtwayland-examples-fix-wayland-texture-sharing-custom-composit.patch
++
+ # filter qml provides
+ %global __provides_exclude_from ^%{_qt5_archdatadir}/qml/.*\\.so$
+ 
+diff --git a/qtwayland-examples-fix-wayland-texture-sharing-custom-composit.patch b/qtwayland-examples-fix-wayland-texture-sharing-custom-composit.patch
+new file mode 100644
+index 0000000..9f6be37
+--- /dev/null
++++ b/qtwayland-examples-fix-wayland-texture-sharing-custom-composit.patch
+@@ -0,0 +1,45 @@
++From 1d18591d9e7ed9b3580e06c37be23bfde24bc30c Mon Sep 17 00:00:00 2001
++From: Peter Seiderer <ps.report@gmx.net>
++Date: Fri, 3 Apr 2020 22:40:29 +0200
++Subject: [PATCH] examples: fix wayland/texture-sharing/custom-compositor
++MIME-Version: 1.0
++Content-Type: text/plain; charset=UTF-8
++Content-Transfer-Encoding: 8bit
++
++Fixes:
++
++  main.cpp:83:33: error: ‘GL_RGBA8’ was not declared in this scope; did you mean ‘GL_RGBA4’?
++     83 |             *glInternalFormat = GL_RGBA8;
++        |                                 ^~~~~~~~
++        |                                 GL_RGBA4
++  main.cpp:120:33: error: ‘GL_RGBA8’ was not declared in this scope; did you mean ‘GL_RGBA4’?
++    120 |             *glInternalFormat = GL_RGBA8;
++        |                                 ^~~~~~~~
++        |                                 GL_RGBA4
++
++Task-number: QTBUG-83304
++Change-Id: I0515f3303b08c405d162986e280e9a7bd35e28f7
++Reviewed-by: Laszlo Agocs <laszlo.agocs@qt.io>
++Reviewed-by: Eskil Abrahamsen Blomfeldt <eskil.abrahamsen-blomfeldt@qt.io>
++---
++ examples/wayland/texture-sharing/custom-compositor/main.cpp | 4 ++++
++ 1 file changed, 4 insertions(+)
++
++diff --git a/examples/wayland/texture-sharing/custom-compositor/main.cpp b/examples/wayland/texture-sharing/custom-compositor/main.cpp
++index a39c8c38..af375024 100644
++--- a/examples/wayland/texture-sharing/custom-compositor/main.cpp
+++++ b/examples/wayland/texture-sharing/custom-compositor/main.cpp
++@@ -63,6 +63,10 @@
++ 
++ #include "QtWaylandCompositor/private/qwltexturesharingextension_p.h"
++ 
+++#ifndef GL_RGBA8
+++#define GL_RGBA8 0x8058
+++#endif
+++
++ class CustomSharingExtension : public QWaylandTextureSharingExtension
++ {
++     Q_OBJECT
++-- 
++2.26.2
++
+-- 
+2.26.2
+

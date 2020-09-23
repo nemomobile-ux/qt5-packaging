@@ -1,7 +1,7 @@
 From c4bd1d2072cdd68c74864d9868ff92f020798a00 Mon Sep 17 00:00:00 2001
 From: Rinigus <rinigus.git@gmail.com>
 Date: Tue, 22 Sep 2020 22:50:16 +0300
-Subject: [PATCH 2/3] do not specify arch via macro
+Subject: [PATCH 2/5] do not specify arch via macro
 
 ---
  qt5-qtwebengine.spec | 2 +-
